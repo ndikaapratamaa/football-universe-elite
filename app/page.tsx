@@ -33,8 +33,8 @@ const COMING_SOON = process.env.NEXT_PUBLIC_COMING_SOON !== "false";
 export function generateMetadata(): Metadata {
   if (!COMING_SOON) return {};
   return {
-    title: "Football Universe Elite — Segera Hadir",
-    description: "Football Universe Elite sedang dikerjakan. Segera hadir.",
+    title: "Football Universe Elite | Segera Hadir",
+    description: "Website khusus penggemar sepak bola segera meluncur. Bersiaplah untuk menyambutnya.",
   };
 }
 
