@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Universe Elite | Segera Hadir</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: {
+                            950: '#050507',
+                            900: '#0a0a0e',
+                            800: '#12121a',
+                            700: '#1e1e2a',
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'Space Mono', 'monospace'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Luxury Styling -->
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050507;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Luxury Grid Mesh Background */
+        .bg-grid-pattern {
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        }
+
+        /* Ambient Glow Spheres */
+        .glow-ambient {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            pointer-events: none;
+            opacity: 0.18;
+        }
+
+        /* Metallic Shimmer Gradient for Headline */
+        .metallic-text {
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 35%, #64748b 70%, #f1f5f9 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmerEffect 8s ease infinite;
+        }
+
+        @keyframes shimmerEffect {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Bespoke Glassmorphism Card (digunakan untuk modal) */
+        .bespoke-card {
+            background: rgba(10, 10, 14, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Modal Blur Backing */
+        .modal-overlay {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Canvas particles */
+        #bg-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center relative p-6 bg-grid-pattern selection:bg-slate-800 selection:text-white">
+
+    <!-- Interactive Canvas Particles -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Subtle Ambient Lighting Elements -->
+    <div class="glow-ambient w-[500px] h-[500px] bg-slate-400 top-[-100px] left-[-100px]"></div>
+    <div class="glow-ambient w-[600px] h-[600px] bg-indigo-900/60 bottom-[-150px] right-[-150px]"></div>
+
+    <!-- Header / Minimalist Top Element -->
+    <header class="relative z-10 w-full max-w-6xl mx-auto flex items-center justify-between pt-4 pb-8">
+        <div class="flex items-center gap-3">
+            <div class="w-2.5 h-2.5 rounded-full bg-slate-100 shadow-[0_0_12px_rgba(255,255,255,0.8)]"></div>
+        </div>
+    </header>
+
+    <!-- Main Center Hero Container -->
+    <main class="relative z-10 w-full max-w-3xl my-auto py-12">
+        <div class="text-center relative">
+
+            <!-- Main Headline -->
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15]">
+                <span class="metallic-text">Kick-off Segera Dimulai</span>
+            </h1>
+
+            <!-- Subheadline Description -->
+            <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto mb-10 font-normal leading-relaxed">
+                Website khusus penggemar sepak bola segera meluncur. Bersiaplah untuk menyambutnya.
+            </p>
+
+            <!-- Action / Status Modal Trigger -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button 
+                    onclick="openModal()" 
+                    class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white text-obsidian-950 font-semibold text-sm hover:bg-slate-200 transition-all duration-300 flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(255,255,255,0.15)] cursor-pointer hover:scale-[1.02] active:scale-98"
+                >
+                    <i class="fa-solid fa-futbol text-xs"></i>
+                    <span>Cek Kesiapan Tim</span>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Minimalist Footer -->
+    <footer class="relative z-10 w-full max-w-6xl mx-auto pt-6 pb-2 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-slate-500 gap-4 border-t border-white/[0.04]">
+        <div class="flex items-center gap-2">
+            <span>&copy; 2026</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-slate-400">FOOTBALL UNIVERSE ELITE</span>
+        </div>
+    </footer>
+
+    <!-- Status Detail Interactive Modal -->
+    <div id="statusModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian-950/80 modal-overlay opacity-0 pointer-events-none transition-all duration-300">
+        <div id="modalBox" class="bespoke-card w-full max-w-md rounded-2xl p-6 sm:p-8 transform scale-95 transition-all duration-300 relative border border-white/10">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-slate-800/80 border border-white/10 flex items-center justify-center text-slate-200">
+                    <i class="fa-solid fa-futbol text-sm"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">Kesiapan Fitur & Sistem</h3>
+                    <p class="text-xs text-slate-400 font-mono">STATUS PENGEMBANGAN</p>
+                </div>
+            </div>
+
+            <!-- Modal Body Progress Items -->
+            <div class="space-y-4 mb-6 font-mono text-xs">
+                
+                <!-- Item 1 -->
+                <div class="p-3.5 rounded-xl bg-obsidian-900/90 border border-white/5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
+                        <span class="text-slate-300">Quiz & Daily Challenges</span>
+                    </div>
+                    <span class="text-emerald-400 font-semibold">SIAP</span>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="p-3.5 rounded-xl bg-obsidian-900/90 border border-white/5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
+                        <span class="text-slate-300">Kinerja dan Tampilan web</span>
+                    </div>
+                    <span class="text-emerald-400 font-semibold">SIAP</span>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="p-3.5 rounded-xl bg-obsidian-900/90 border border-white/5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-spinner animate-spin text-amber-400 text-xs"></i>
+                        <span class="text-slate-300">FIX Gacha & Player Collection</span>
+                    </div>
+                    <span class="text-amber-400 font-semibold">BERLANGSUNG</span>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="p-3.5 rounded-xl bg-obsidian-900/90 border border-white/5 flex items-center justify-between opacity-60">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-notch text-slate-500 text-xs"></i>
+                        <span class="text-slate-400">Manajemen Skuad & Uji Coba</span>
+                    </div>
+                    <span class="text-slate-500 font-semibold">MENUNGGU</span>
+                </div>
+
+            </div>
+
+            <!-- Footer Modal note -->
+            <p class="text-xs text-slate-400 leading-relaxed font-sans mb-6">
+                Proses pengembangan berjalan bertahap demi menyuguhkan hasil terbaik.
+            </p>
+
+            <button onclick="closeModal()" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-medium text-xs transition-colors border border-white/10">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function openModal() {
+            const modal = document.getElementById('statusModal');
+            const box = document.getElementById('modalBox');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            box.classList.remove('scale-95');
+            box.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('statusModal');
+            const box = document.getElementById('modalBox');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            box.classList.remove('scale-100');
+            box.classList.add('scale-95');
+        }
+
+        // Close on backdrop click
+        document.getElementById('statusModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Abstract Floating Background Particle Engine
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class AbstractParticle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.3;
+                this.speedX = (Math.random() - 0.5) * 0.2;
+                this.speedY = (Math.random() - 0.5) * 0.2;
+                this.opacity = Math.random() * 0.35 + 0.05;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.floor((canvas.width * canvas.height) / 22000);
+            for (let i = 0; i < count; i++) {
+                particles.push(new AbstractParticle());
+            }
+        }
+
+        function renderParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(renderParticles);
+        }
+
+        initParticles();
+        renderParticles();
+    </script>
+</body>
+</html>
