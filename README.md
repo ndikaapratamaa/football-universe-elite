@@ -31,21 +31,12 @@ Football Universe Elite adalah website untuk para penggemar sepak bola: berita, 
 ## 🗂️ Struktur singkat
 
 ```
-app/          halaman dan layout utama
-components/   navbar, footer, bagian-bagian beranda, komponen UI
-data/         data statis
-hooks/        custom hooks
-public/       gambar dan logo
+app/          
+components/   
+data/        
+hooks/       
+public/      
 ```
-
-## 🚀 Coba di komputermu
-
-```bash
-npm install
-npm run dev
-```
-
-Lalu buka <http://localhost:3000>.
 
 ## 👤 Pembuat
 
