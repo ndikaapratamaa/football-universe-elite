@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, Circle, Layers, Loader2, Lock, Server, X } from "lucide-react";
+import { Check, Circle, Loader2, X } from "lucide-react";
 
 type Particle = {
   x: number;
@@ -11,6 +11,25 @@ type Particle = {
   vy: number;
   opacity: number;
 };
+
+function BallIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9.5" />
+      <path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" />
+      <path d="M12 7.5V2.6M16 10.4l4.4-1.4M14.5 15.1l2.7 3.8M9.5 15.1l-2.7 3.8M8 10.4L3.6 9" />
+    </svg>
+  );
+}
 
 export function ComingSoon() {
   const [open, setOpen] = React.useState(false);
@@ -107,39 +126,19 @@ export function ComingSoon() {
       <header className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between pb-8 pt-4">
         <div className="flex items-center gap-3">
           <div className="h-2.5 w-2.5 rounded-full bg-slate-100 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
-          <span className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400">
-            STUDIO // V2.0
-          </span>
-        </div>
-        <div className="hidden items-center gap-2 rounded-full border border-white/5 bg-[#0a0a0e] px-3 py-1.5 font-mono text-xs text-slate-400 sm:flex">
-          <Lock className="h-2.5 w-2.5 text-emerald-400" aria-hidden="true" />
-          <span>SECURE STAGING ENVIRONMENT</span>
         </div>
       </header>
 
       {/* Konten utama */}
       <main className="relative z-10 my-auto w-full max-w-3xl py-12">
-        <div className="cs-card cs-float relative overflow-hidden rounded-3xl p-8 text-center sm:p-14">
-          <div className="absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-          <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-[#0a0a0e] px-4 py-1.5 text-xs text-slate-300 shadow-inner">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-slate-300">
-              SYSTEM IN DEVELOPMENT
-            </span>
-          </div>
-
+        <div className="relative text-center">
           <h1 className="mb-6 text-4xl font-extrabold leading-[1.15] tracking-tight sm:text-6xl">
-            <span className="cs-metal">Web Sedang Dikerjakan</span>
+            <span className="cs-metal">Kick-off Segera Dimulai</span>
           </h1>
 
           <p className="mx-auto mb-10 max-w-xl text-base font-normal leading-relaxed text-slate-400 sm:text-lg">
-            Platform sedang dirancang ulang dengan standar performa dan
-            arsitektur visual modern. Layanan akan segera aktif dalam waktu
-            dekat.
+            Website khusus penggemar sepak bola segera meluncur. Bersiaplah
+            untuk menyambutnya.
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -148,8 +147,8 @@ export function ComingSoon() {
               onClick={() => setOpen(true)}
               className="flex w-full cursor-pointer items-center justify-center gap-2.5 rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-[#050507] shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all duration-300 hover:scale-[1.02] hover:bg-slate-200 active:scale-95 sm:w-auto"
             >
-              <Layers className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>Cek Status Sistem</span>
+              <BallIcon className="h-3.5 w-3.5" />
+              <span>Cek Kesiapan Tim</span>
             </button>
           </div>
         </div>
@@ -160,15 +159,7 @@ export function ComingSoon() {
         <div className="flex items-center gap-2">
           <span>&copy; 2026</span>
           <span className="text-slate-600">•</span>
-          <span className="text-slate-400">ALL RIGHTS RESERVED</span>
-        </div>
-        <div className="flex items-center gap-6 text-slate-400">
-          <span className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            SERVER ONLINE
-          </span>
-          <span className="text-slate-600">/</span>
-          <span>LATENCY: 14ms</span>
+          <span className="text-slate-400">FOOTBALL UNIVERSE ELITE</span>
         </div>
       </footer>
 
@@ -177,7 +168,7 @@ export function ComingSoon() {
         role="dialog"
         aria-modal="true"
         aria-hidden={!open}
-        aria-label="Progres pengerjaan"
+        aria-label="Kesiapan fitur dan sistem"
         onClick={(e) => {
           if (e.target === e.currentTarget) setOpen(false);
         }}
@@ -201,14 +192,14 @@ export function ComingSoon() {
 
           <div className="mb-6 flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-800/80 text-slate-200">
-              <Server className="h-4 w-4" aria-hidden="true" />
+              <BallIcon className="h-4 w-4" />
             </div>
             <div className="text-left">
               <h3 className="text-base font-bold text-white">
-                Progres Pengerjaan
+                Kesiapan Fitur &amp; Sistem
               </h3>
               <p className="font-mono text-xs text-slate-400">
-                STAGING ENVIRONMENT V2
+                STATUS PENGEMBANGAN
               </p>
             </div>
           </div>
@@ -217,31 +208,39 @@ export function ComingSoon() {
             <div className="flex items-center justify-between rounded-xl border border-white/5 bg-[#0a0a0e]/90 p-3.5">
               <div className="flex items-center gap-3">
                 <Check className="h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
-                <span className="text-slate-300">Arsitektur &amp; UI Core</span>
+                <span className="text-slate-300">Quiz &amp; Daily Challenges</span>
               </div>
-              <span className="font-semibold text-emerald-400">SELESAI</span>
+              <span className="font-semibold text-emerald-400">SIAP</span>
+            </div>
+
+            <div className="flex items-center justify-between rounded-xl border border-white/5 bg-[#0a0a0e]/90 p-3.5">
+              <div className="flex items-center gap-3">
+                <Check className="h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
+                <span className="text-slate-300">Kinerja dan Tampilan web</span>
+              </div>
+              <span className="font-semibold text-emerald-400">SIAP</span>
             </div>
 
             <div className="flex items-center justify-between rounded-xl border border-white/5 bg-[#0a0a0e]/90 p-3.5">
               <div className="flex items-center gap-3">
                 <Loader2 className="h-3.5 w-3.5 animate-spin text-amber-400" aria-hidden="true" />
-                <span className="text-slate-300">Integrasi API &amp; Backend</span>
+                <span className="text-slate-300">FIX Gacha &amp; Player Collection</span>
               </div>
-              <span className="font-semibold text-amber-400">PROSES</span>
+              <span className="font-semibold text-amber-400">BERLANGSUNG</span>
             </div>
 
             <div className="flex items-center justify-between rounded-xl border border-white/5 bg-[#0a0a0e]/90 p-3.5 opacity-60">
               <div className="flex items-center gap-3">
                 <Circle className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" />
-                <span className="text-slate-400">Pengujian Keamanan</span>
+                <span className="text-slate-400">Manajemen Skuad &amp; Uji Coba</span>
               </div>
-              <span className="font-semibold text-slate-500">PENDING</span>
+              <span className="font-semibold text-slate-500">MENUNGGU</span>
             </div>
           </div>
 
           <p className="mb-6 text-left text-xs leading-relaxed text-slate-400">
-            Sistem dikembangkan secara mandiri untuk memastikan performa tinggi
-            dan keamanan maksimal.
+            Proses pengembangan berjalan bertahap demi menyuguhkan hasil
+            terbaik.
           </p>
 
           <button
@@ -249,7 +248,7 @@ export function ComingSoon() {
             onClick={() => setOpen(false)}
             className="w-full rounded-xl border border-white/10 bg-white/10 py-2.5 text-xs font-medium text-white transition-colors hover:bg-white/15"
           >
-            Tutup Jendela
+            Tutup
           </button>
         </div>
       </div>
